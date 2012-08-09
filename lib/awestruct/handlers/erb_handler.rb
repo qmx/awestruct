@@ -37,7 +37,7 @@ module Awestruct
 
       def rendered_content(context, with_layouts=true)
         erb = Erubis::Eruby.new( delegate.rendered_content( context, with_layouts) )
-        erb.result( context.send( :binding ) )
+        erb.result( context )
       end
     end
   end
