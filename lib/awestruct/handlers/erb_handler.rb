@@ -2,6 +2,7 @@ require 'awestruct/handlers/base_handler'
 require 'awestruct/handlers/file_handler'
 require 'awestruct/handlers/front_matter_handler'
 require 'awestruct/handlers/layout_handler'
+require 'erubis'
 
 module Awestruct
   module Handlers
@@ -35,7 +36,7 @@ module Awestruct
       end
 
       def rendered_content(context, with_layouts=true)
-        erb = ERB.new( delegate.rendered_content( context, with_layouts) )
+        erb = Erubis::Eruby.new( delegate.rendered_content( context, with_layouts) )
         erb.result( context.send( :binding ) )
       end
     end
